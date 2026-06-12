@@ -20,13 +20,22 @@ function UploadResume() {
 
     try {
       const response = await api.post(
-        "/upload-resume",
-        formData
-      );
+  "/upload-resume",
+  formData
+);
 
-      console.log("API Response:", response.data);
+setResumeText(
+  response.data.resume_text
+);
 
-      setResumeText(response.data.resume_text);
+localStorage.setItem(
+  "resumeText",
+  response.data.resume_text
+);
+
+console.log(
+  "Resume saved to localStorage"
+);
 
       alert("Resume uploaded successfully!");
     } catch (error) {
